@@ -10,33 +10,37 @@ mkdir "${PREFIX}/etc/containers/registries.d"
 cp skopeo/default.yaml "${PREFIX}/etc/containers/registries.d/"
 
 cp skopeo/default-policy.json "${PREFIX}/etc/containers/policy.json"
-cp common/pkg/seccomp/seccomp.json "${PREFIX}/share/containers/"
 
-sed '
-  /^# hooks_dir = \[/ {
-    :loop_hooks_dir
-    N
-    /\]/b end_hooks_dir
-    b loop_hooks_dir
-    :end_hooks_dir
-    s/# //g
-    s|"/usr/|"'"${PREFIX}"'/|
-  }
+# Exclude Linux-specific configuration on other platforms.
+case "${target_platform}" in linux-*)
+  cp common/pkg/seccomp/seccomp.json "${PREFIX}/share/containers/"
 
-  /^# seccomp_profile = "/ {
-    s/# //g
-    s|"/usr/|"'"${PREFIX}"'/|
-  }
+  sed '
+    /^# hooks_dir = \[/ {
+      :loop_hooks_dir
+      N
+      /\]/b end_hooks_dir
+      b loop_hooks_dir
+      :end_hooks_dir
+      s/# //g
+      s|"/usr/|"'"${PREFIX}"'/|
+    }
 
-  /^# cni_plugin_dirs = \["/ {
-    s/# //g
-    s|"/usr/libexec/|"'"${PREFIX}"'/lib/|
-  }
+    /^# seccomp_profile = "/ {
+      s/# //g
+      s|"/usr/|"'"${PREFIX}"'/|
+    }
 
-  /^# network_config_dir = "/ {
-    s/# //g
-    s|"/|"'"${PREFIX}"'/|
-  }
-  ' \
-  common/pkg/config/containers.conf \
-  > "${PREFIX}/share/containers/containers.conf"
+    /^# cni_plugin_dirs = \["/ {
+      s/# //g
+      s|"/usr/libexec/|"'"${PREFIX}"'/lib/|
+    }
+
+    /^# network_config_dir = "/ {
+      s/# //g
+      s|"/|"'"${PREFIX}"'/|
+    }
+    ' \
+    common/pkg/config/containers.conf \
+    > "${PREFIX}/share/containers/containers.conf"
+esac
