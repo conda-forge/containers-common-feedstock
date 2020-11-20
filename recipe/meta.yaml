@@ -1,4 +1,4 @@
-{% set version = "0.27.0" %}
+{% set version = "0.28.0" %}
 
 package:
   name: containers-common
@@ -6,7 +6,7 @@ package:
 
 source:
   - url: https://github.com/containers/common/archive/v{{ version }}.tar.gz
-    sha256: a8ac5b0416ad0c28ab4fbe2fd9e0064d0f84dd24eba6df6514a2ba592c47ff9d
+    sha256: 5e12044e6b87663feb91a4d9de51667a28aef4727bbd6f2de11c478d6d37952b
     folder: common
   # NOTE: Due to historic reasons, some configs are from the skopeo project.
   #       When updating, please
