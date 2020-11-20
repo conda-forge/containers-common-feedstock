@@ -46,15 +46,6 @@ else
     validate_recipe_outputs "${FEEDSTOCK_NAME}"
 
     if [[ "${UPLOAD_PACKAGES}" != "False" ]]; then
-        anaconda="$(command -v anaconda)"
-        mv "${anaconda}"{,.orig}
-        cat > "${anaconda}" <<'EOS'
-#! /usr/bin/env python
-import sys, os
-sys.argv[sys.argv.index('--quiet')] = '--verbose'
-os.execvp('anaconda.orig', sys.argv)
-EOS
-        chmod +x "${anaconda}"
         upload_package --validate --feedstock-name="${FEEDSTOCK_NAME}"  "${FEEDSTOCK_ROOT}" "${RECIPE_ROOT}" "${CONFIG_FILE}"
     fi
 fi
