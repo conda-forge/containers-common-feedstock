@@ -6,7 +6,7 @@ package:
 
 source:
   - url: https://github.com/containers/common/archive/v{{ version }}.tar.gz
-    sha256: cf84023f1bef7e1699e6e8de8fce3f6b284dd30c31baa856763d664b6490abb4
+    sha256: 2bd096a583b5ed7c6578c654753987bf25b29e6f2600a2fe085c901908b7fafc
     folder: common
   # NOTE: Due to historic reasons, some configs are from the skopeo project.
   #       When updating, please
