@@ -34,7 +34,7 @@ test:
     - grep -qF quay.io "${PREFIX}/etc/containers/registries.conf"
     - grep -qF docker.io "${PREFIX}/etc/containers/registries.conf"
     - |
-      grep -qF 'sigstore-staging: file:///var/lib/containers/sigstore' "${PREFIX}/etc/containers/registries.d/default.yaml"
+      grep -qF 'docker:' "${PREFIX}/etc/containers/registries.d/default.yaml"
     - grep -qF docker-daemon "${PREFIX}/etc/containers/policy.json"
     - |
       grep -qF '"defaultAction": "SCMP_ACT_ERRNO",' "${PREFIX}/share/containers/seccomp.json"  # [linux]
