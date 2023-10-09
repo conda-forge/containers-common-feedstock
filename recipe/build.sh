@@ -22,12 +22,12 @@ case "${target_platform}" in linux-*)
       /\]/b end_hooks_dir
       b loop_hooks_dir
       :end_hooks_dir
-      s/# //g
+      s/# *//g
       s|"/usr/|"'"${PREFIX}"'/|
     }
 
     /^# *seccomp_profile = "/ {
-      s/# //g
+      s/# *//g
       s|"/usr/|"'"${PREFIX}"'/|
     }
 
@@ -37,12 +37,12 @@ case "${target_platform}" in linux-*)
       /\]/b end_cni_plugin_dirs
       b loop_cni_plugin_dirs
       :end_cni_plugin_dirs
-      s/# //g
+      s/# *s//g
       s|"/usr/libexec/|"'"${PREFIX}"'/lib/|
     }
 
     /^# *network_config_dir = "/ {
-      s/# //g
+      s/# *//g
       s|"/|"'"${PREFIX}"'/|
     }
     ' \
