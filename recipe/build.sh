@@ -31,7 +31,12 @@ case "${target_platform}" in linux-*)
       s|"/usr/|"'"${PREFIX}"'/|
     }
 
-    /^# *cni_plugin_dirs = \["/ {
+    /^# *cni_plugin_dirs = \[/ {
+      :loop_cni_plugin_dirs
+      N
+      /\]/b end_cni_plugin_dirs
+      b loop_cni_plugin_dirs
+      :end_cni_plugin_dirs
       s/# //g
       s|"/usr/libexec/|"'"${PREFIX}"'/lib/|
     }
