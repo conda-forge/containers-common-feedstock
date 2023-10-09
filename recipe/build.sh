@@ -37,7 +37,7 @@ case "${target_platform}" in linux-*)
       /\]/b end_cni_plugin_dirs
       b loop_cni_plugin_dirs
       :end_cni_plugin_dirs
-      s/# *s//g
+      s/# *//g
       s|"/usr/libexec/|"'"${PREFIX}"'/lib/|
     }
 
