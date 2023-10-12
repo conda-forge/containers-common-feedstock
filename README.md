@@ -204,4 +204,5 @@ Feedstock Maintainers
 * [@AndreasAlbertQC](https://github.com/AndreasAlbertQC/)
 * [@mbargull](https://github.com/mbargull/)
 * [@ngam](https://github.com/ngam/)
+* [@pavelzw](https://github.com/pavelzw/)
 

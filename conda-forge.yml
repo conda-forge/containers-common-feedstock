@@ -7,6 +7,10 @@ provider:
 github:
   branch_name: main
   tooling_branch_name: main
+bot:
+  version_updates:
+    exclude:
+      - '1.31.1'
 conda_build:
   pkg_format: '2'
 azure:

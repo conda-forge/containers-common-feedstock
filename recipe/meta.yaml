@@ -23,7 +23,7 @@ source:
     folder: buildah
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 test:
@@ -53,4 +53,5 @@ extra:
   recipe-maintainers:
     - mbargull
     - ngam
+    - pavelzw
     - AndreasAlbertQC
