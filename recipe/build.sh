@@ -4,7 +4,7 @@ mkdir -p "${PREFIX}/etc/containers"
 mkdir -p "${PREFIX}/share/containers"
 
 mkdir "${PREFIX}/etc/containers/registries.conf.d"
-cp buildah/tests/registries.conf "${PREFIX}/etc/containers/"
+cp $RECIPE_DIR/config/registries.conf "${PREFIX}/etc/containers/"
 
 mkdir "${PREFIX}/etc/containers/registries.d"
 cp skopeo/default.yaml "${PREFIX}/etc/containers/registries.d/"
