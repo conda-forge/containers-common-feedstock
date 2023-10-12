@@ -17,7 +17,7 @@ source:
     folder: skopeo
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win]
 
 test:
