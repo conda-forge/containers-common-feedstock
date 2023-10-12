@@ -15,15 +15,9 @@ source:
   - url: https://github.com/containers/skopeo/archive/v1.13.3.tar.gz
     sha256: 0b788fc5725ac79327f7c29797821a2bafc1c3c87bbfcb2998c2a1be949e314d
     folder: skopeo
-  # NOTE: When updating to a newer buildah source archive,
-  #        1. check if registries.conf has already been added to containers-common,
-  #        2. make sure that tests/registries.conf is a plain and simple as of version 1.17.0.
-  - url: https://github.com/containers/buildah/archive/v1.32.0.tar.gz
-    sha256: 806ed541ea3cc761e0fa2dde8c6ee2d6ed258baf1cc5bd72b6b0cf1e876dda15
-    folder: buildah
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
 
 test:
