@@ -16,28 +16,33 @@ case "${target_platform}" in linux-*)
   cp common/pkg/seccomp/seccomp.json "${PREFIX}/share/containers/"
 
   sed '
-    /^# hooks_dir = \[/ {
+    /^# *hooks_dir = \[/ {
       :loop_hooks_dir
       N
       /\]/b end_hooks_dir
       b loop_hooks_dir
       :end_hooks_dir
-      s/# //g
+      s/# *//g
       s|"/usr/|"'"${PREFIX}"'/|
     }
 
-    /^# seccomp_profile = "/ {
-      s/# //g
+    /^# *seccomp_profile = "/ {
+      s/# *//g
       s|"/usr/|"'"${PREFIX}"'/|
     }
 
-    /^# cni_plugin_dirs = \["/ {
-      s/# //g
+    /^# *cni_plugin_dirs = \[/ {
+      :loop_cni_plugin_dirs
+      N
+      /\]/b end_cni_plugin_dirs
+      b loop_cni_plugin_dirs
+      :end_cni_plugin_dirs
+      s/# *//g
       s|"/usr/libexec/|"'"${PREFIX}"'/lib/|
     }
 
-    /^# network_config_dir = "/ {
-      s/# //g
+    /^# *network_config_dir = "/ {
+      s/# *//g
       s|"/|"'"${PREFIX}"'/|
     }
     ' \
