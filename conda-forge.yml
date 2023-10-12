@@ -13,3 +13,5 @@ bot:
       - '1.31.1'
 conda_build:
   pkg_format: '2'
+azure:
+  store_build_artifacts: True
