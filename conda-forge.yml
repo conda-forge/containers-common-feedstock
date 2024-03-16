@@ -1,6 +1,5 @@
 build_platform: {osx_arm64: osx_64}
 conda_forge_output_validation: true
-test_on_native_only: true
 provider:
   linux_aarch64: default
   linux_ppc64le: default
@@ -10,9 +9,10 @@ github:
 bot:
   version_updates:
     exclude:
-      - '1.31.1'
-      - '1.0.1'
+    - 1.31.1
+    - 1.0.1
 conda_build:
   pkg_format: '2'
 azure:
-  store_build_artifacts: True
+  store_build_artifacts: true
+test: native_and_emulated
